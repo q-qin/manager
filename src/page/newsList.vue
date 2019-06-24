@@ -18,7 +18,7 @@
                 <el-table-column property="sort" sortable label="排序">
                 </el-table-column>
                 <el-table-column label="启用状态">
-                    <template scope="scope">
+                    <template slot-scope="scope">
                         <el-switch v-model="scope.row.state"></el-switch>
                     </template>
                 </el-table-column>
@@ -27,7 +27,7 @@
                 <el-table-column property="update_time" label="更新时间" width="180">
                 </el-table-column>
                 <el-table-column label="操作" width="80">
-                    <template scope="scope">
+                    <template slot-scope="scope">
                         <el-button size="small" @click="news_edit(scope.$index, scope.row)">编辑</el-button>
                     </template>
                 </el-table-column>
@@ -84,8 +84,8 @@ import headTop from '../components/headTop'
 import {mapState} from 'vuex'
 import newsForm from '../components/newsForm'
 import { quillEditor } from 'vue-quill-editor'
-import dtime from 'time-formater'
 import { getNewsCount,getNewsList,addNews,editNews,delNews } from '@/api/getData'
+import {dateFormat} from '@/config/mUtils'
 
 export default {
     data() {
@@ -140,7 +140,7 @@ export default {
                 if(News.code ==0){
                     News.data.forEach((n,i)=>{
                         n.state = (n.delflg==0?true:false)
-                        n.update_time = dtime(n.update_time).format('YYYY-MM-DD HH:mm:ss')
+                        n.update_time = dateFormat(new Date(n.update_time))
                     })
                     this.tableData = News.data;
                 }else {

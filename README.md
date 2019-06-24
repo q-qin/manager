@@ -16,3 +16,6 @@ npm run build
 ```
 
 ## 配置文件
+
+## 2019-0624 新增
+  加入DllReferencePlugin插件，将第三方库文件和我们的代码分开掉

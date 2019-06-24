@@ -41,17 +41,17 @@
 
 <script>
 	import headTop from '../components/headTop'
-	import dtime from 'time-formater'
-	import {apiCount,apiAllRecord} from '@/api/getData'
+    import {apiCount,apiAllRecord} from '@/api/getData'
+    import {dateFormat} from '@/config/mUtils'
     export default {
     	data(){
     		return {
-    			apiCount: null,
+    			apiCount: 0,
                 apiAll:[],
                 offset:0,
                 limit:10,
                 currentPage: 1,
-                today:dtime().format('YYYY-MM-DD'),
+                today:dateFormat(new Date()),
     		}
     	},
     	components: {
